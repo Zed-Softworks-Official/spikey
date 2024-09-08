@@ -1,8 +1,13 @@
 import { create_manifest } from '~/manifest'
 import { create_spikey_folder_structure } from '~/f'
-import chalk from 'chalk'
 
-console.log(chalk.bold('Starting Spikey!'))
+export const create_spikey = (plugin_data: PluginData) => {
+	create_spikey_folder_structure(plugin_data)
+	create_manifest(plugin_data)
+}
 
-create_spikey_folder_structure()
-create_manifest()
+create_spikey({
+	name: 'Test Plugin',
+	author: 'Zed Softworks LLC',
+	uuid: 'dev.zedsoftworks.test',
+})
