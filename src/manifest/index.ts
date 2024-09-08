@@ -1,46 +1,37 @@
 import fs from 'fs'
 
+/**
+ * Creates the manifest.json file for the plugin so Stream Deck can load it properly
+ *
+ * @param {PluginData} plugin_data - The plugin data object
+ */
 export const create_manifest = (plugin_data: PluginData) => {
 	const manifest: Manifest = {
-		Actions: [
-			{
-				UUID: plugin_data.uuid,
-				Icon: 'imgs/actionIcon.png',
-				Name: plugin_data.name,
-				States: [
-					{
-						Image: 'imgs/actionDefaultImage.png',
-						TitleAlignment: 'middle',
-						Name: plugin_data.name,
-						Title: plugin_data.name,
-						ShowTitle: true,
-						TitleColor: '#FFFFFF',
-						FontFamily: 'Arial',
-						FontStyle: 'regular',
-						FontSize: 12,
-						FontUnderline: false,
-					},
-				],
-			},
-		],
+		Actions: [],
 		Author: plugin_data.author,
-		CodePath: 'bin/index.js',
+		CodePath: 'bin/plugin.js',
 		Description: plugin_data.name,
-		Icon: 'imgs/pluginIcon.png',
+		Icon: `imgs/${plugin_data.icon}`,
 		Name: plugin_data.name,
-		Version: '1.0.0',
-		SDKVersion: 2,
-		OS: {
+		Version: plugin_data.version,
+		SDKVersion: plugin_data.sdk_version ?? 2,
+		OS: plugin_data.os ?? {
 			Platform: 'windows',
 			MinimumVersion: '10',
 		},
-		Software: {
-			MinimumVersion: '5.0',
+		Software: plugin_data.software ?? {
+			MinimumVersion: '6.1',
+		},
+		Nodejs: {
+			Version: '20',
+			Debug: 'enabled',
 		},
 	}
 
 	// Create manifest.json file if it doesn't exist
 	if (!fs.existsSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`)) {
+		fs.writeFileSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
+	} else {
 		fs.writeFileSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
 	}
 }

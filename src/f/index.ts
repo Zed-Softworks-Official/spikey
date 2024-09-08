@@ -1,5 +1,10 @@
 import fs from 'fs'
 
+/**
+ * Creates the spikey folder structure for the plugin
+ *
+ * @param {PluginData} plugin_data - The plugin data object
+ */
 export const create_spikey_folder_structure = (plugin_data: PluginData) => {
 	// Create base directory if it doesn't exist
 	if (!fs.existsSync('.spikey')) {

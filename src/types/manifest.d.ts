@@ -45,7 +45,12 @@ type ManifestOS =
 	  }
 
 type ManifestSoftware = {
-	MinimumVersion: '5.0' | '6.0' | '7.0' | '8.0'
+	MinimumVersion: string
+}
+
+type ManifestNodeJS = {
+	Version: string
+	Debug: 'enabled' | 'disabled'
 }
 
 type Manifest = {
@@ -59,4 +64,5 @@ type Manifest = {
 	SDKVersion: number
 	OS: ManifestOS
 	Software: ManifestSoftware
+	Nodejs: ManifestNodeJS
 }
