@@ -13,3 +13,5 @@ type SpikeyPlugin = {
 	plugin_data: PluginData
 	manifest: Manifest
 }
+
+export { PluginData, SpikeyPlugin }

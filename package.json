@@ -4,9 +4,17 @@
 	"description": "",
 	"type": "module",
 	"main": "./dist/index.js",
-	"types": "./dist/core.d.ts",
+	"module": "./dist/index.js",
+	"types": "./src/types/core.d.ts",
 	"scripts": {
 		"build": "rollup -c"
+	},
+	"exports": {
+		"./package.json": "./package.json",
+		".": {
+			"types": "./dist/index.d.ts",
+			"default": "./src/types/core.d.ts"
+		}
 	},
 	"keywords": [],
 	"author": "Zed Softworks LLC",
@@ -22,6 +30,7 @@
 		"chalk": "^5.3.0",
 		"eslint": "^9.10.0",
 		"prettier": "^3.3.3",
+		"rollup": "^4.21.2",
 		"tslib": "^2.7.0",
 		"typescript": "^5.5.4"
 	}

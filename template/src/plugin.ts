@@ -1,9 +1,9 @@
-import { init_spikey } from 'spikey'
+import type { PluginData } from 'spikey'
 
-const plugin = init_spikey({
+export const metadata = {
 	name: 'Spikey Counter',
 	author: 'Zed Softworks LLC',
 	uuid: 'dev.zedsoftworks-llc.spikey-counter',
 	icon: 'icon.png',
 	version: '1.0.0',
-})
+} as PluginData

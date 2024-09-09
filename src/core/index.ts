@@ -3,6 +3,8 @@ import chalk from 'chalk'
 import { create_spikey_folder_structure } from '~/f'
 import { create_manifest } from '~/manifest'
 
+import type { PluginData, SpikeyPlugin } from '~/types/core'
+
 /**
  * Initializes the spikey folder structure and creates the manifest.json file
  * @param {PluginData} plugin_data - The plugin data object

@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+import { PluginData } from '~/types/core'
+
 /**
  * Creates the spikey folder structure for the plugin
  *

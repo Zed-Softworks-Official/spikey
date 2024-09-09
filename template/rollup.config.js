@@ -5,6 +5,7 @@ export default {
 	output: {
 		dir: '.spikey/dev.zedsoftworks-llc.spikey-counter.sdPlugin/bin',
 		format: 'es',
+		compact: true,
 	},
 	plugins: [
 		typescript({

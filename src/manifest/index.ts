@@ -1,5 +1,7 @@
 import fs from 'fs'
 
+import { PluginData } from '~/types/core'
+
 /**
  * Creates the manifest.json file for the plugin so Stream Deck can load it properly
  *
