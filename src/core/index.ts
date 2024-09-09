@@ -32,3 +32,6 @@ export const init_spikey = (cwd: string, plugin_data: PluginData) => {
 		manifest,
 	} as SpikeyPlugin
 }
+
+import { compile_plugin } from '~/core/compile'
+export { compile_plugin }
