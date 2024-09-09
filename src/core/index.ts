@@ -27,9 +27,6 @@ export const init_spikey = (cwd: string, plugin_data: PluginData) => {
 	// Move the compiled plugin to the bin directory
 	fs.renameSync(`${cwd}/.spikey/build/plugin.js`, `${cwd}/.spikey/${plugin_data.uuid}.sdPlugin/bin/plugin.js`)
 
-	// Deelte the build directory
-	fs.rmSync(`${cwd}/.spikey/build`, { recursive: true })
-
 	return {
 		plugin_data,
 		manifest,

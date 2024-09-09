@@ -1,9 +1,12 @@
 #! /usr/bin/env node
 
+import typescript from '@rollup/plugin-typescript'
+import { rollup } from 'rollup'
+import fs from 'fs'
+
 import { Command } from 'commander'
 import chalk from 'chalk'
 import { createSpinner } from 'nanospinner'
-import { rollup } from 'rollup'
 
 import { init_spikey } from '~/core'
 
@@ -22,15 +25,39 @@ program
 		const cwd = process.cwd()
 
 		// Bundle the plugin using rollup
-		await rollup(await import(`file://${cwd}/rollup.config.js`).then((module) => module.default))
+		const bundle = await rollup({
+			input: 'src/plugin.ts',
+			plugins: [
+				typescript({
+					tsconfig: `${cwd}/tsconfig.json`,
+				}),
+			],
+		})
+
+		if (!bundle) {
+			console.error(chalk.red('Failed to bundle plugin'))
+			spinner.stop()
+
+			return
+		}
+
+		const { output } = await bundle.generate({
+			dir: '.spikey/build',
+			format: 'es',
+			compact: true,
+		})
+
+		// Write the plugin to the .spikey/build directory
+		fs.writeFileSync(`${cwd}/.spikey/build/plugin.js`, output[0].code)
 
 		// Get the exported plugin data from the plugin.ts file in the src directory using the current working directory
-		const plugin_data = await import(`file://${cwd}/.spikey/build/plugin.js`).then((module) => module.metadata)
+		//const plugin_data = await import(`file://${cwd}/.spikey/build/plugin.js`).then((module) => module.metadata)
 
 		// Initialize the spikey folder structure and create the manifest.json file
-		const spikey_plugin = init_spikey(cwd, plugin_data)
+		//const spikey_plugin = init_spikey(cwd, plugin_data)
 
-		// Add the actions to the manifest.json file
+		// Close the bundle
+		await bundle.close()
 
 		// Stop the spinner
 		spinner.stop()
