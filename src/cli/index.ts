@@ -4,7 +4,7 @@ import { Command } from 'commander'
 import chalk from 'chalk'
 import { createSpinner } from 'nanospinner'
 
-import { init_spikey, compile_plugin } from '~/core'
+import { init_spikey, compile_plugin, create_spikey_dirs } from '~/core'
 
 const program = new Command()
 
@@ -20,14 +20,21 @@ program
 		// Get current working directory
 		const cwd = process.cwd()
 
-		// Compile the plugin
-		await compile_plugin(cwd)
+		// Create Spikey directories
+		create_spikey_dirs()
 
-		// Get the exported plugin data from the plugin.ts file in the src directory using the current working directory
-		const plugin_data = await import(`file://${cwd}/.spikey/build/plugin.js`).then((module) => module.metadata)
+		// Compile the plugin
+		const compiled_plugin = await compile_plugin(cwd)
+
+		if (!compiled_plugin.success || compiled_plugin.plugin_data === undefined) {
+			console.error(chalk.red('Failed to compile plugin'))
+			spinner.stop()
+
+			return
+		}
 
 		// Initialize the spikey folder structure and create the manifest.json file
-		const spikey_plugin = init_spikey(cwd, plugin_data)
+		const spikey_plugin = init_spikey(cwd, compiled_plugin.plugin_data)
 
 		// Stop the spinner
 		spinner.stop()

@@ -14,4 +14,10 @@ type SpikeyPlugin = {
 	manifest: Manifest
 }
 
-export { PluginData, SpikeyPlugin }
+type SpikeyCompiledResult = {
+	plugin_data?: PluginData
+	manifest?: Manifest
+	success: boolean
+}
+
+export { PluginData, SpikeyPlugin, SpikeyCompiledResult }

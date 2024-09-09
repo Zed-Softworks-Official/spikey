@@ -2,17 +2,29 @@ import fs from 'fs'
 
 import { PluginData } from '~/types/core'
 
-/**
- * Creates the spikey folder structure for the plugin
- *
- * @param {PluginData} plugin_data - The plugin data object
- */
-export const create_spikey_folder_structure = (plugin_data: PluginData) => {
+export const create_spikey_dirs = () => {
 	// Create base directory if it doesn't exist
 	if (!fs.existsSync('.spikey')) {
 		fs.mkdirSync('.spikey')
 	}
 
+	// Create the build directory if it doesn't exist
+	if (!fs.existsSync('.spikey/build')) {
+		fs.mkdirSync('.spikey/build')
+	}
+
+	// Create the buid/actions directory if it doesn't exist
+	if (!fs.existsSync('.spikey/build/actions')) {
+		fs.mkdirSync('.spikey/build/actions')
+	}
+}
+
+/**
+ * Creates the spikey folder structure for the plugin
+ *
+ * @param {PluginData} plugin_data - The plugin data object
+ */
+export const create_spikey_sdplugin = (plugin_data: PluginData) => {
 	// if the uuid is not provided, the create one from the plugin data
 	if (!plugin_data.uuid) {
 		plugin_data.uuid = `com.${plugin_data.author}.${plugin_data.name}`
