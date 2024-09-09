@@ -3,9 +3,8 @@
 import { Command } from 'commander'
 import chalk from 'chalk'
 import { createSpinner } from 'nanospinner'
-import fs from 'fs'
-import { create_spikey_folder_structure } from '~/f'
-import { create_manifest } from '~/manifest'
+import { rollup } from 'rollup'
+
 import { init_spikey } from '~/core'
 
 const program = new Command()
@@ -21,6 +20,9 @@ program
 
 		// Get current working directory
 		const cwd = process.cwd()
+
+		// Bundle the plugin using rollup
+		await rollup(await import(`file://${cwd}/rollup.config.js`).then((module) => module.default))
 
 		// Get the exported plugin data from the plugin.ts file in the src directory using the current working directory
 		const plugin_data = await import(`file://${cwd}/.spikey/build/plugin.js`).then((module) => module.metadata)
