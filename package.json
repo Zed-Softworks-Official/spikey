@@ -3,17 +3,20 @@
 	"version": "1.0.0",
 	"description": "",
 	"type": "module",
-	"main": "./dist/index.js",
+	"main": "./dist/cli/index.js",
 	"module": "./dist/index.js",
 	"types": "./src/types/core.d.ts",
+	"bin": {
+		"spikey": "./dist/cli/index.js"
+	},
 	"scripts": {
 		"build": "rollup -c"
 	},
 	"exports": {
 		"./package.json": "./package.json",
 		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./src/types/core.d.ts"
+			"types": "./src/types/core.d.ts",
+			"default": "./dist/index.js"
 		}
 	},
 	"keywords": [],
@@ -27,11 +30,14 @@
 		"@types/node": "^22.5.4",
 		"@typescript-eslint/eslint-plugin": "^8.4.0",
 		"@typescript-eslint/parser": "^8.4.0",
-		"chalk": "^5.3.0",
 		"eslint": "^9.10.0",
 		"prettier": "^3.3.3",
 		"rollup": "^4.21.2",
 		"tslib": "^2.7.0",
 		"typescript": "^5.5.4"
+	},
+	"dependencies": {
+		"chalk": "^5.3.0",
+		"commander": "^12.1.0"
 	}
 }

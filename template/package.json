@@ -5,7 +5,8 @@
 	"type": "module",
 	"main": "./.spikey/dev.zedsoftworks-llc.spikey-counter.sdPlugin/bin/plugin.js",
 	"scripts": {
-		"dev": "rollup -c && node ./.spikey/dev.zedsoftworks-llc.spikey-counter.sdPlugin/bin/plugin.js"
+		"dev-deprecated": "rollup -c && node ./.spikey/dev.zedsoftworks-llc.spikey-counter.sdPlugin/bin/plugin.js",
+		"dev": "spikey compile"
 	},
 	"keywords": [],
 	"author": "Zed Softworks LLC",

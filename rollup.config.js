@@ -13,4 +13,16 @@ export default [
 			}),
 		],
 	},
+	{
+		input: './src/cli/index.ts',
+		output: {
+			dir: './dist/cli',
+			format: 'es',
+		},
+		plugins: [
+			typescript({
+				tsconfig: './tsconfig.json',
+			}),
+		],
+	},
 ]
