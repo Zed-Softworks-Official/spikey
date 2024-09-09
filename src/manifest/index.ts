@@ -34,4 +34,6 @@ export const create_manifest = (plugin_data: PluginData) => {
 	} else {
 		fs.writeFileSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
 	}
+
+	return manifest
 }

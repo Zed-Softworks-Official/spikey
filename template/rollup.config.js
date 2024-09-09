@@ -1,9 +1,9 @@
 import typescript from '@rollup/plugin-typescript'
 
 export default {
-	input: './src/index.ts',
+	input: 'src/plugin.ts',
 	output: {
-		dir: './dist',
+		dir: '.spikey/dev.zedsoftworks-llc.spikey-counter.sdPlugin/bin',
 		format: 'es',
 	},
 	plugins: [
