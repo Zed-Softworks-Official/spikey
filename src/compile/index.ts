@@ -4,6 +4,7 @@ import { rollup } from 'rollup'
 import chalk from 'chalk'
 
 import { create_manifest } from '~/manifest'
+import { generate_action_class } from '~/compile/actions'
 import type { PluginData, SpikeyCompiledResult } from '~/types/core'
 
 /**
@@ -86,18 +87,6 @@ const compile_action = async (cwd: string, plugin_data: PluginData): Promise<boo
 
 		return false
 	}
-	// Write the actions to the .spikey/build/actions directory
-	// for (let i = 0; i < files.length; i++) {
-	// 	if (output[i].type === 'chunk') {
-	// 		continue
-	// 	}
-
-	// 	// Write the action to the .spikey/build/actions directory
-	// 	fs.writeFileSync(`${cwd}/.spikey/build/actions/${files[i]}`, output[i].code)
-	// }
-	fs.writeFileSync(`.spikey/build/actions/${output[0].fileName}`, output[0].code)
-
-	// Read the action metadata from the actions data
 
 	// Create the actions metadata for the manifest.json an adds it to the manifest.json file
 	const actions_metadata: ManifestAction[] = output.map(
@@ -110,6 +99,9 @@ const compile_action = async (cwd: string, plugin_data: PluginData): Promise<boo
 			}) as ManifestAction
 	)
 
+	// Generate the action class files
+	actions_metadata.forEach((action) => generate_action_class(action, output[0].code))
+
 	// Add the actions metadata to the manifest.json file
 	const manifest = JSON.parse(
 		fs.readFileSync(`${cwd}/.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, 'utf8')
@@ -117,6 +109,8 @@ const compile_action = async (cwd: string, plugin_data: PluginData): Promise<boo
 	manifest.Actions = manifest.Actions.concat(actions_metadata)
 
 	fs.writeFileSync(`${cwd}/.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
+
+	await bundle.close()
 
 	return true
 }

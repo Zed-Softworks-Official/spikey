@@ -2,9 +2,8 @@ import chalk from 'chalk'
 
 import fs from 'fs'
 import { create_spikey_sdplugin, create_spikey_dirs } from '~/f'
-import { create_manifest } from '~/manifest'
 
-import type { PluginData, SpikeyPlugin } from '~/types/core'
+import type { PluginData } from '~/types/core'
 
 /**
  * Initializes the spikey folder structure and creates the manifest.json file
@@ -25,5 +24,5 @@ export const init_spikey = (cwd: string, plugin_data: PluginData) => {
 	fs.renameSync(`${cwd}/.spikey/build/plugin.js`, `${cwd}/.spikey/${plugin_data.uuid}.sdPlugin/bin/plugin.js`)
 }
 
-import { compile_plugin } from '~/core/compile'
+import { compile_plugin } from '~/compile'
 export { compile_plugin, create_spikey_dirs }
