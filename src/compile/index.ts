@@ -4,7 +4,7 @@ import { rollup } from 'rollup'
 import chalk from 'chalk'
 
 import { create_manifest } from '~/manifest'
-import { generate_action_class } from '~/compile/actions'
+import { parse_action } from '~/compile/actions'
 import type { PluginData, SpikeyCompiledResult } from '~/types/core'
 
 /**
@@ -100,7 +100,9 @@ const compile_action = async (cwd: string, plugin_data: PluginData): Promise<boo
 	)
 
 	// Generate the action class files
-	actions_metadata.forEach((action) => generate_action_class(action, output[0].code))
+	for (const action of actions_metadata) {
+		await parse_action(action, `src/actions/${action.Name}.ts`)
+	}
 
 	// Add the actions metadata to the manifest.json file
 	const manifest = JSON.parse(

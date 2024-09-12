@@ -7,6 +7,7 @@ export default [
 			dir: './dist',
 			format: 'es',
 		},
+		external: ['chalk', 'fs', 'rollup', '@rollup/plugin-typescript'],
 		plugins: [
 			typescript({
 				tsconfig: './tsconfig.json',
@@ -19,6 +20,7 @@ export default [
 			dir: './dist/cli',
 			format: 'es',
 		},
+		external: ['chalk', 'commander', 'nanospinner', 'rollup', 'fs', '@rollup/plugin-typescript'],
 		plugins: [
 			typescript({
 				tsconfig: './tsconfig.json',

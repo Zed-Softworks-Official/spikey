@@ -1,4 +1,12 @@
 type StreamDeckActionMetadata = {
-	name: string
-	uuid: string
+	name?: string
+	states?: ManifestActionState[]
 }
+
+type ParsedFunctionData = {
+	name: string
+	parameters: string[]
+	body: string
+}
+
+export { StreamDeckActionMetadata, ParsedFunctionData }

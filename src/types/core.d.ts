@@ -1,3 +1,5 @@
+import type { StreamDeckActionMetadata } from '~/types/action'
+
 type PluginData = {
 	name: string
 	author: string
@@ -20,4 +22,4 @@ type SpikeyCompiledResult = {
 	success: boolean
 }
 
-export { PluginData, SpikeyPlugin, SpikeyCompiledResult }
+export { PluginData, SpikeyPlugin, SpikeyCompiledResult, StreamDeckActionMetadata }
