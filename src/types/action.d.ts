@@ -1,5 +1,5 @@
 type StreamDeckActionMetadata = {
-	name?: string
+	icon?: string
 	states?: ManifestActionState[]
 }
 
