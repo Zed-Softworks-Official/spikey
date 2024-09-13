@@ -1,5 +1,6 @@
 import { KeyDownEvent } from '@elgato/streamdeck'
 import type { StreamDeckActionMetadata } from 'spikey'
+import fs from 'fs'
 
 export const metadata = {} as StreamDeckActionMetadata
 
