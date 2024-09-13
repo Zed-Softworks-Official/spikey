@@ -1,6 +1,6 @@
 import fs from 'fs'
 
-import { tokenize_source } from '~/compile/lexer'
+import { Lexer } from './lexer'
 
 /**
  * Parses the source code of the action and generates the action class for the streamdeck api
@@ -10,23 +10,10 @@ import { tokenize_source } from '~/compile/lexer'
  */
 export const parse_action = async (action_data: ManifestAction, filepath: string) => {
 	// Read the source code from the file
-	await tokenize_source(fs.readFileSync(filepath, 'utf8'))
+	let token: Token | null
+	const lexer = new Lexer(fs.readFileSync(filepath, 'utf8'))
 
-	// Generate the default imports for the action class
-	const new_imports = `import { action, KeyDownEvent, SingletonAction } from '@elgato/streamdeck'`
-
-	// Generate the action class decorator
-	const decorator = `@action({ UUID: "${action_data.UUID}" })`
-
-	// Format the action name to be PascalCase
-	const action_name = action_data.Name.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
-
-	// Generate the action class header
-	const header = `export class ${action_name} extends SingletonAction {`
-
-	const generated_source = `${new_imports}\n${decorator}\n${header}\n\n}`
-
-	// Compile the action using tsup
-
-	fs.writeFileSync(`.spikey/build/actions/${action_data.Name}.ts`, generated_source)
+	while ((token = lexer.nextToken()) !== null) {
+		console.log(token)
+	}
 }
