@@ -21,3 +21,8 @@ type FunctionDefinition = {
 	body: string
 	async: boolean
 }
+
+type ActionDefinition = {
+	action_data: ManifestAction
+	source: string
+}
