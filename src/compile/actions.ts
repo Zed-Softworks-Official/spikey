@@ -73,7 +73,13 @@ const create_source = (
 ) => {
 	let raw_source: string = ''
 	default_imports.forEach((value) => (raw_source += value + '\n'))
-	imports.forEach((value) => (raw_source += value + '\n'))
+	imports.forEach((value) => {
+		if (value.includes('StreamDeckActionMetadata')) {
+			return ''
+		}
+
+		return (raw_source += value + '\n')
+	})
 
 	raw_source += `@action({UUID: '${uuid}'})\n`
 	raw_source += `export class ${class_name} extends SingletonAction {\n`
