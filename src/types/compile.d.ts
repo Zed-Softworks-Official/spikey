@@ -14,3 +14,10 @@ type Token = {
 	value: string
 	position: number
 }
+
+type FunctionDefinition = {
+	name: string
+	parameters: string[]
+	body: string
+	async: boolean
+}
