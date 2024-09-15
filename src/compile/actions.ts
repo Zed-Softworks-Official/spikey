@@ -1,7 +1,9 @@
 import fs from 'fs'
+import prettier from 'prettier'
 
 import { Lexer } from '~/compile/lexer'
 import { parse_functions, parse_imports } from '~/compile/parse'
+import { PluginData } from '~/types/core'
 
 /**
  * Parses the source code of the action and generates the action class for the streamdeck api
@@ -9,7 +11,10 @@ import { parse_functions, parse_imports } from '~/compile/parse'
  * @param action_data
  * @param filepath
  */
-export const create_action = async (action_data: ManifestAction, filepath: string): Promise<ActionDefinition> => {
+export const create_action = async (filepath: string, plugin_data: PluginData): Promise<ActionDefinition> => {
+	// Generate the action class name from the filename
+	const file_name = 'hello-world'
+
 	// Tokenize the source code
 	let token: Token | null
 	const lexer = new Lexer(fs.readFileSync(filepath, 'utf8'))
@@ -28,8 +33,8 @@ export const create_action = async (action_data: ManifestAction, filepath: strin
 	// Create the default imports
 	const default_action_imports = ["import { action, SingletonAction } from '@elgato/streamdeck'"]
 
-	// Create the action class name from the action data and change it to PascalCase
-	const class_name = action_data.Name.toLowerCase()
+	// Format the class name from the filename
+	const class_name = file_name
 		.toLowerCase()
 		.replace(new RegExp(/[-_]+/, 'g'), ' ')
 		.replace(new RegExp(/[^\w\s]/, 'g'), '')
@@ -37,7 +42,24 @@ export const create_action = async (action_data: ManifestAction, filepath: strin
 		.replace(new RegExp(/\w/), (s) => s.toUpperCase())
 
 	// Create the source
-	const source = create_source(imports, default_action_imports, functions, action_data.UUID, class_name)
+	const source = create_source(
+		imports,
+		default_action_imports,
+		functions,
+		plugin_data.uuid + '.' + file_name,
+		class_name
+	)
+
+	// Write the source to the actions directory
+	const formatted_source = await prettier.format(source, { parser: 'typescript', semi: true, singleQuote: true })
+	fs.writeFileSync(`.spikey/build/actions/${file_name}.ts`, formatted_source)
+
+	const action_data: ManifestAction = {
+		Name: file_name,
+		UUID: plugin_data.uuid + '.' + file_name,
+		Icon: 'imgs/icon.png',
+		States: [],
+	}
 
 	return {
 		action_data,

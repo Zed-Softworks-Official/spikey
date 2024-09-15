@@ -16,9 +16,4 @@ type SpikeyPlugin = {
 	manifest: Manifest
 }
 
-type SpikeyCompiledResult = {
-	plugin_data?: PluginData
-	manifest?: Manifest
-}
-
-export { PluginData, SpikeyPlugin, SpikeyCompiledResult, StreamDeckActionMetadata }
+export { PluginData, SpikeyPlugin, StreamDeckActionMetadata }

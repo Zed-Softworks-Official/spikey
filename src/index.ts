@@ -1,3 +1,4 @@
-import { init_spikey } from '~/core'
+import { create_spikey_dirs } from '~/f'
 
-export { init_spikey }
+import { compile_plugin } from '~/compile'
+export { compile_plugin, create_spikey_dirs }

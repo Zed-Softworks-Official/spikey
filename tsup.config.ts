@@ -8,4 +8,5 @@ export default defineConfig({
 	bundle: true,
 	external: ['chalk', 'fs', 'commander', 'nanospinner', 'tsup'],
 	tsconfig: 'tsconfig.json',
+	dts: true,
 })

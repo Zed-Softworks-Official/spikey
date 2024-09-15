@@ -1,5 +1,3 @@
-import fs from 'fs'
-
 import { PluginData } from '~/types/core'
 
 /**
@@ -30,12 +28,12 @@ export const create_manifest = (plugin_data: PluginData) => {
 		},
 	}
 
-	// Create manifest.json file if it doesn't exist
-	if (!fs.existsSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`)) {
-		fs.writeFileSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
-	} else {
-		fs.writeFileSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
-	}
+	// // Create manifest.json file if it doesn't exist
+	// if (!fs.existsSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`)) {
+	// 	fs.writeFileSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
+	// } else {
+	// 	fs.writeFileSync(`.spikey/${plugin_data.uuid}.sdPlugin/manifest.json`, JSON.stringify(manifest, null, 2))
+	// }
 
 	return manifest
 }
