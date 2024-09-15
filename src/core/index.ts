@@ -1,6 +1,5 @@
 import chalk from 'chalk'
 
-import fs from 'fs'
 import { create_spikey_sdplugin, create_spikey_dirs } from '~/f'
 
 import type { PluginData } from '~/types/core'
@@ -19,9 +18,6 @@ export const init_spikey = (cwd: string, plugin_data: PluginData) => {
 
 	// Create .spikey for the plugin
 	create_spikey_sdplugin(plugin_data)
-
-	// Move the compiled plugin to the bin directory
-	fs.renameSync(`${cwd}/.spikey/build/plugin.js`, `${cwd}/.spikey/${plugin_data.uuid}.sdPlugin/bin/plugin.js`)
 }
 
 import { compile_plugin } from '~/compile'

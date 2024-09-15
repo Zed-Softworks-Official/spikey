@@ -26,3 +26,13 @@ type ActionDefinition = {
 	action_data: ManifestAction
 	source: string
 }
+
+type EntrypointDefinition = {
+	source: string
+	manifest: Manifest
+}
+
+type SourceFile = {
+	path: string
+	type: 'action' | 'user'
+}

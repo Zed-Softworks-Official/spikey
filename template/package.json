@@ -3,17 +3,11 @@
 	"version": "1.0.0",
 	"description": "",
 	"type": "module",
-	"main": "./.spikey/dev.zedsoftworks-llc.spikey-counter.sdPlugin/bin/plugin.js",
 	"scripts": {
 		"build": "spikey compile"
 	},
 	"keywords": [],
 	"author": "Zed Softworks LLC",
-	"devDependencies": {
-		"@rollup/plugin-typescript": "^11.1.6",
-		"rollup": "^4.21.2",
-		"tslib": "^2.7.0"
-	},
 	"dependencies": {
 		"@elgato/streamdeck": "^0.3.0",
 		"spikey": "link:.."
