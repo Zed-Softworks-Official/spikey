@@ -24,7 +24,7 @@ type FunctionDefinition = {
 
 type ActionDefinition = {
 	action_data: ManifestAction
-	source: string
+	filename: string
 }
 
 type EntrypointDefinition = {
