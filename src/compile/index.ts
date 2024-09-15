@@ -61,6 +61,7 @@ export const compile_plugin = async (): Promise<boolean> => {
 		minify: false,
 		bundle: true,
 		dts: false,
+		silent: true,
 	})
 
 	return true
@@ -77,6 +78,7 @@ const generate_plugin_data = async (): Promise<PluginData | null> => {
 		minify: true,
 		dts: false,
 		tsconfig: 'tsconfig.json',
+		silent: true,
 	})
 
 	const plugin_data = await import(`file://${path.resolve('.spikey/build/spikey.config.js')}`).then(
