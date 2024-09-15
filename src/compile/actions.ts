@@ -35,7 +35,7 @@ export const create_action = async (filepath: string, plugin_data: PluginData): 
 	const default_action_imports = ["import { action, SingletonAction } from '@elgato/streamdeck'"]
 
 	// Format the class name from the filename
-	const class_name = filename
+	const classname = filename
 		.toLowerCase()
 		.replace(new RegExp(/[-_]+/, 'g'), ' ')
 		.replace(new RegExp(/[^\w\s]/, 'g'), '')
@@ -48,7 +48,7 @@ export const create_action = async (filepath: string, plugin_data: PluginData): 
 		default_action_imports,
 		functions,
 		plugin_data.uuid + '.' + filename,
-		class_name
+		classname
 	)
 
 	// Write the source to the actions directory
@@ -65,6 +65,7 @@ export const create_action = async (filepath: string, plugin_data: PluginData): 
 	return {
 		action_data,
 		filename,
+		classname,
 	}
 }
 
