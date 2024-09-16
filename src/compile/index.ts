@@ -8,7 +8,7 @@ import { create_spikey_sdplugin } from '~/f'
 import { create_action } from '~/compile/actions'
 
 import type { PluginData } from '~/types/core'
-import { create_entrypoint } from './entrypoint'
+import { create_entrypoint } from '~/compile/entrypoint'
 
 /**
  * Main function to compile the plugin entrypoint and actions
