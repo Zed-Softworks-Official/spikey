@@ -6,7 +6,7 @@ export default defineConfig({
 	minify: true,
 	format: 'esm',
 	bundle: true,
-	external: ['chalk', 'fs', 'commander', 'nanospinner', 'tsup'],
+	external: ['chalk', 'fs', 'commander', 'nanospinner', 'tsup', 'inquirer'],
 	tsconfig: 'tsconfig.json',
 	dts: true,
 })

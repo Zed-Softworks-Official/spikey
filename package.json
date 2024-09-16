@@ -1,7 +1,7 @@
 {
 	"name": "spikey",
 	"version": "1.0.0",
-	"description": "",
+	"description": "Create Stream Deck plugins with ease",
 	"funding": "https://github.com/sponsors/Zed-Softworks-Official",
 	"repository": {
 		"url": "https://github.com/Zed-Softworks-Official/spikey"
@@ -9,7 +9,7 @@
 	"type": "module",
 	"main": "./dist/cli/index.js",
 	"module": "./dist/index.js",
-	"types": "./src/types/core.d.ts",
+	"types": "./dist/index.d.ts",
 	"bin": {
 		"spikey": "./dist/cli/index.js"
 	},
@@ -19,11 +19,16 @@
 	"exports": {
 		"./package.json": "./package.json",
 		".": {
-			"types": "./src/types/core.d.ts",
+			"types": "./dist/index.d.ts",
 			"default": "./dist/index.js"
 		}
 	},
-	"keywords": ["spikey", "streamdeck", "plugin", "typescript"],
+	"keywords": [
+		"spikey",
+		"streamdeck",
+		"plugin",
+		"typescript"
+	],
 	"author": "Zed Softworks LLC",
 	"license": "MIT",
 	"packageManager": "pnpm@9.4.0",
@@ -43,6 +48,7 @@
 	"dependencies": {
 		"chalk": "^5.3.0",
 		"commander": "^12.1.0",
+		"inquirer": "^11.0.1",
 		"nanospinner": "^1.1.0",
 		"tsup": "^8.2.4"
 	}

@@ -2,6 +2,7 @@
 
 import { Command } from 'commander'
 import chalk from 'chalk'
+import inquirer from 'inquirer'
 import { createSpinner } from 'nanospinner'
 
 import { compile_plugin, create_spikey_dirs } from '~/.'
@@ -34,6 +35,22 @@ program
 
 		// Log that the plugin was compiled successfully
 		console.log(chalk.bold('Plugin compiled successfully!'))
+	})
+
+program
+	.command('create')
+	.description('Create a new spikey plugin')
+	.action(async () => {
+		console.log(chalk.green('Created plugin!'))
+		const answers = await inquirer.prompt([
+			{
+				type: 'input',
+				name: 'plugin_name',
+				message: 'What is the name of your plugin?',
+			},
+		])
+
+		console.log(answers)
 	})
 
 program.parse()
