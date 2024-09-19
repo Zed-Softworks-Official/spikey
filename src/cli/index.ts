@@ -11,6 +11,10 @@ const program = new Command()
 
 program.name('spikey').description('CLI for spikey').version('1.0.0')
 
+/**
+ * Command to compile the plugin
+ * Creates the .sdPlugin directory
+ */
 program
 	.command('compile')
 	.description('Compiles the plugin')
@@ -37,6 +41,9 @@ program
 		console.log(chalk.bold('Plugin compiled successfully!'))
 	})
 
+/**
+ * Command to create a new spikey plugin
+ */
 program
 	.command('create')
 	.description('Create a new spikey plugin')

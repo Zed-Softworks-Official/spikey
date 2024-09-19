@@ -3,12 +3,14 @@ import path from 'path'
 import chalk from 'chalk'
 import tsup from 'tsup'
 
-import { create_manifest } from '~/compile/manifest'
 import { create_spikey_sdplugin } from '~/f'
+
+import { create_manifest } from '~/compile/manifest'
 import { create_action } from '~/compile/actions'
 
-import type { PluginData } from '~/types/core'
 import { create_entrypoint } from '~/compile/entrypoint'
+
+import type { PluginData } from '~/types/core'
 
 /**
  * Main function to compile the plugin entrypoint and actions
@@ -63,6 +65,9 @@ export const compile_plugin = async (): Promise<boolean> => {
 		dts: false,
 		silent: true,
 	})
+
+	// Move the assets to the .spikey/{sdplugin_uuid}/imgs directory
+	move_assets(plugin_data, manifest)
 
 	return true
 }
@@ -138,4 +143,15 @@ const dir_scan = (dir: string) => {
 	})
 
 	return results
+}
+
+/**
+ * Uses the manifest to move the assets to the .spikey/{sdplugin_uuid}/imgs directory
+ *
+ * @param {PluginData} plugin_data - The plugin data object
+ * @param {Manifest} manifest - The manifest object
+ */
+const move_assets = (plugin_data: PluginData, manifest: Manifest) => {
+	// Look for the imgs in the manifest and move them to the .spikey/{sdplugin_uuid}/imgs directory
+	fs.copyFileSync(`assets/${manifest.Icon}`, `.spikey/${plugin_data.uuid}.sdPlugin/imgs/${manifest.Icon}`)
 }
