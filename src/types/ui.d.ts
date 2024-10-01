@@ -15,7 +15,7 @@ type UICheckbox = {
 		disabled?: boolean
 		value?: boolean
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UICheckboxList = {
@@ -31,7 +31,7 @@ type UICheckboxList = {
 		hot_reload?: boolean
 		loading?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIColor = {
@@ -41,7 +41,7 @@ type UIColor = {
 		disabled?: boolean
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIDate = {
@@ -55,7 +55,7 @@ type UIDate = {
 		type?: string
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIDateTime = {
@@ -69,7 +69,7 @@ type UIDateTime = {
 		type?: string
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIDelegate = {
@@ -93,7 +93,7 @@ type UIFile = {
 		label?: string
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIMonth = {
@@ -107,7 +107,7 @@ type UIMonth = {
 		type?: string
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIPassword = {
@@ -119,7 +119,7 @@ type UIPassword = {
 		required?: boolean
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIRadio = {
@@ -136,7 +136,7 @@ type UIRadio = {
 		hot_reload?: boolean
 		loading?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIRange = {
@@ -150,7 +150,7 @@ type UIRange = {
 		step?: number
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UISelect = {
@@ -168,7 +168,7 @@ type UISelect = {
 		loading?: string
 		show_refresh?: boolean
 	}
-	persistence?: PersistenceInfo & { label_setting?: string }
+	persistence: PersistenceInfo & { label_setting?: string }
 }
 
 type UITextArea = {
@@ -180,7 +180,7 @@ type UITextArea = {
 		show_length?: boolean
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UITextField = {
@@ -193,7 +193,7 @@ type UITextField = {
 		required?: boolean
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UITime = {
@@ -207,7 +207,7 @@ type UITime = {
 		type?: string
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type UIWeek = {
@@ -221,12 +221,12 @@ type UIWeek = {
 		type?: string
 		value?: string
 	}
-	persistence?: PersistenceInfo
+	persistence: PersistenceInfo
 }
 
 type PersistenceInfo = {
 	global?: boolean
-	setting?: string
+	setting: string
 }
 
 /**
