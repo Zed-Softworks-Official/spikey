@@ -1,55 +1,62 @@
 {
-	"name": "spikey",
-	"version": "1.0.0",
-	"description": "Create Stream Deck plugins with ease",
-	"funding": "https://github.com/sponsors/Zed-Softworks-Official",
-	"repository": {
-		"url": "https://github.com/Zed-Softworks-Official/spikey"
-	},
-	"type": "module",
-	"main": "./dist/cli/index.js",
-	"module": "./dist/index.js",
-	"types": "./dist/index.d.ts",
-	"bin": {
-		"spikey": "./dist/cli/index.js"
-	},
-	"scripts": {
-		"build": "tsup"
-	},
-	"exports": {
-		"./package.json": "./package.json",
-		".": {
-			"types": "./dist/index.d.ts",
-			"default": "./dist/index.js"
-		}
-	},
-	"keywords": [
-		"spikey",
-		"streamdeck",
-		"plugin",
-		"typescript"
-	],
-	"author": "Zed Softworks LLC",
-	"license": "MIT",
-	"packageManager": "pnpm@9.4.0",
-	"devDependencies": {
-		"@elgato/cli": "^0.3.2",
-		"@elgato/streamdeck": "^0.3.0",
-		"@eslint/js": "^9.10.0",
-		"@types/node": "^22.5.4",
-		"@typescript-eslint/eslint-plugin": "^8.4.0",
-		"@typescript-eslint/parser": "^8.4.0",
-		"eslint": "^9.10.0",
-		"globals": "^15.9.0",
-		"prettier": "^3.3.3",
-		"typescript": "^5.5.4",
-		"typescript-eslint": "^8.5.0"
-	},
-	"dependencies": {
-		"chalk": "^5.3.0",
-		"commander": "^12.1.0",
-		"inquirer": "^11.0.1",
-		"nanospinner": "^1.1.0",
-		"tsup": "^8.2.4"
-	}
+  "name": "spikey",
+  "version": "1.0.0",
+  "description": "Create Stream Deck plugins with ease",
+  "funding": "https://github.com/sponsors/Zed-Softworks-Official",
+  "repository": {
+    "url": "https://github.com/Zed-Softworks-Official/spikey"
+  },
+  "type": "module",
+  "main": "./dist/cli/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "spikey": "./dist/cli/index.js"
+  },
+  "scripts": {
+    "build": "tsup",
+    "test": "jest"
+  },
+  "exports": {
+    "./package.json": "./package.json",
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    }
+  },
+  "keywords": [
+    "spikey",
+    "streamdeck",
+    "plugin",
+    "typescript"
+  ],
+  "author": "Zed Softworks LLC",
+  "license": "MIT",
+  "packageManager": "pnpm@9.4.0",
+  "devDependencies": {
+    "@babel/core": "^7.25.2",
+    "@babel/preset-env": "^7.25.4",
+    "@babel/preset-typescript": "^7.24.7",
+    "@elgato/cli": "^0.3.2",
+    "@elgato/streamdeck": "^0.3.0",
+    "@eslint/js": "^9.10.0",
+    "@types/node": "^22.5.4",
+    "@typescript-eslint/eslint-plugin": "^8.4.0",
+    "@typescript-eslint/parser": "^8.4.0",
+    "babel-jest": "^29.7.0",
+    "eslint": "^9.10.0",
+    "globals": "^15.9.0",
+    "jest": "^29.7.0",
+    "prettier": "^3.3.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.5.4",
+    "typescript-eslint": "^8.5.0"
+  },
+  "dependencies": {
+    "chalk": "^5.3.0",
+    "commander": "^12.1.0",
+    "inquirer": "^11.0.1",
+    "nanospinner": "^1.1.0",
+    "tsup": "^8.2.4"
+  }
 }
