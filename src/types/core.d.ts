@@ -1,4 +1,5 @@
 import type { StreamDeckActionMetadata } from '~/types/action'
+import type { UIItem, ActionUIConfig } from '~/types/ui'
 
 type PluginData = {
 	name: string
@@ -16,4 +17,4 @@ type SpikeyPlugin = {
 	manifest: Manifest
 }
 
-export { PluginData, SpikeyPlugin, StreamDeckActionMetadata }
+export { PluginData, SpikeyPlugin, StreamDeckActionMetadata, UIItem, ActionUIConfig }
